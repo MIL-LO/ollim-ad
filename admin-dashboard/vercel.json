@@ -5,13 +5,14 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
+        "zeroConfig": false,
         "distDir": "build",
-        "buildCommand": "npm install && npm run build"
+        "buildCommand": "npm install -g react-scripts && npm install && CI=false react-scripts build"
       }
     }
   ],
   "routes": [
     { "handle": "filesystem" },
-    { "src": "/.*", "dest": "/index.html" }
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
